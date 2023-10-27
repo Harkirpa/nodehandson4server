@@ -31,7 +31,7 @@ const login=(req,res)=>{
     });
     console.log(details)
     if(details){
-        const validate=bcrypt.compareSync(logindata.password,detail.password)
+        const validate=bcrypt.compareSync(logindata.password,details.password)
         if (validate) {
             const token = jwt.sign({ useremail: logindata.email }, secret_key,{expiresIn:"360000"}); // for generating the jwt token
             console.log(token);
