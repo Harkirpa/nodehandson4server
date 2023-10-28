@@ -15,12 +15,16 @@ const register=(req,res)=>{
     }
     const hashpassword=bcrypt.hashSync(data.password,10)
     // console.log(hashpassword)
-    array.push(data)
+    const tempobject={
+        email:data.email,
+        password:hashpassword
+    }
+    array.push(tempobject)
      const token=jwt.sign({useremail:data.email},secret_key)
     console.log(token)
     // res.send(array)
     res.send({msg:'userRequired',token:token})
-}
+};
 
 const login=(req,res)=>{
     const logindata=req.body;
@@ -29,7 +33,7 @@ const login=(req,res)=>{
             return item;
         }
     });
-    console.log(details)
+    // console.log(details)
     if(details){
         const validate=bcrypt.compareSync(logindata.password,details.password)
         if (validate) {
@@ -40,7 +44,8 @@ const login=(req,res)=>{
             return res.send('user password is wrong');
         }
     }else{
-        return res.send('email is wrong')
+        console.log('email is wrong')
+        return res.send({Msg:'email is wrong'})
     }
     // console.log('login details',logindata)
 };

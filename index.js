@@ -1,7 +1,7 @@
 const express=require("express");
 
 const userRouter=require('./router/userRouter')
-const PORT=8000
+const PORT=4555
 const app=express();
 
 app.use(express.json())
@@ -12,7 +12,7 @@ app.use(cors({
 app.use("/api",userRouter)
 app.listen(PORT,()=>{
     try{
-        console.log('server is running on Port No. 8000')
+        console.log('server is running on Port No. 4555')
     }
     catch(err){
            console.log('error occured during starting the live error',err)

@@ -1,9 +1,9 @@
 const { login, register } = require("../controller/userController");
-const auth=require("../middleware/auth")
+// const auth=require("../middleware/auth")
 
 const userRouter=require("express").Router();
-userRouter.get("/",auth,(req,res)=>{
-    res.send({msg:"this is home page"})
+userRouter.get("/",(req,res)=>{
+ res.send('This is home Page')
 })
 userRouter.post("/login",login)
 userRouter.post("/register",register)
